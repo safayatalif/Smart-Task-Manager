@@ -724,7 +724,7 @@ const TaskManager = () => {
                                 };
 
                                 return (
-                                    <div key={task.id} className="bg-white rounded-lg shadow p-6">
+                                    <div key={task.id} className="bg-white rounded-lg shadow p-6 border border-purple-500 border-double">
                                         <div className="flex justify-between items-start mb-3">
                                             <div className="flex-1">
                                                 <h3 className="text-lg font-semibold text-gray-800">{task.title}</h3>
