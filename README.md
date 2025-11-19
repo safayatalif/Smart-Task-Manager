@@ -1,17 +1,72 @@
-# React + Vite
+# Smart Task Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple web app to manage projects, teams and tasks --- assign tasks to
+team members, track capacity, and automatically rebalance workload with
+a **Reassign Tasks** button.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1.  **User & Team Setup**
 
-## React Compiler
+    -   Users can register and log in.
+    -   Users can create teams and add members manually (no email
+        required).
+    -   Each team member has:
+        -   Name
+        -   Role
+        -   Capacity (0--5 tasks they can handle comfortably)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+2.  **Project & Task Management**
 
-## Expanding the ESLint configuration
+    -   Create projects and link them to a specific team.
+    -   Add tasks under a project.
+    -   Each task includes:
+        -   Title
+        -   Description
+        -   Assigned Member (or "Unassigned")
+        -   Priority: Low / Medium / High
+        -   Status: Pending / In Progress / Done
+    -   Add, Edit, Delete tasks.
+    -   Filter tasks by Project or Member.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# Smart-Task-Manager
+3.  **Task Assignment Flow**
+
+    -   While creating a task:
+        -   Select Project (team auto-links).
+
+        -   Choose Assigned Member from the dropdown.
+
+        -   Show each member's (currentTasks / capacity).
+
+        -   If a member is over capacity, show warning:
+
+                Riya has 4 tasks but capacity is 3. Assign anyway?
+
+        -   Options: **Assign Anyway** / **Choose Another**
+
+        -   Optional **Auto-assign** to pick lowest workload member.
+
+4.  **Auto Reassignment**
+
+    -   When user clicks **Reassign Tasks**:
+        -   Detect overloaded members.
+        -   Move extra tasks to members with free capacity.
+    -   Rules:
+        -   Keep High priority tasks with current assignee.
+        -   Move only Low and Medium priority tasks.
+        -   Update assignments automatically.
+        -   Log changes in Activity Log.
+
+5.  **Dashboard** Shows:
+
+    -   Total Projects\
+    -   Total Tasks\
+    -   Team Summary (current tasks vs. capacity)\
+    -   "Reassign Tasks" button\
+    -   Recent Reassignments (last 5 moved tasks)
+
+6.  **Activity Log** Example:
+
+        10:30 AM — Task “UI Design” reassigned from Riya to Farhan.
+
+    Shows latest 5--10 logs on dashboard.
