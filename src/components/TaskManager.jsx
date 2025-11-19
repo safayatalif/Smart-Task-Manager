@@ -548,8 +548,8 @@ const TaskManager = () => {
                             </div>
                         </div>
 
-                        <div className="bg-white rounded-lg shadow">
-                            <div className="p-6 border-b">
+                        <div className="bg-white rounded-lg shadow  border border-purple-500 border-double">
+                            <div className="p-6 ">
                                 <h2 className="text-xl font-semibold text-gray-800 flex items-center gap-2">
                                     <Activity size={24} />
                                     Recent Activity
@@ -574,8 +574,8 @@ const TaskManager = () => {
                 )}
 
                 {view === 'teams' && (
-                    <div>
-                        <div className="flex justify-between items-center mb-6">
+                    <div className=''>
+                        <div className="flex justify-between items-center mb-6 ">
                             <h2 className="text-2xl font-bold text-gray-800">Teams</h2>
                             <button
                                 onClick={() => openModal('team')}
@@ -586,9 +586,9 @@ const TaskManager = () => {
                             </button>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 ">
                             {userTeams.map(team => (
-                                <div key={team.id} className="bg-white rounded-lg shadow p-6">
+                                <div key={team.id} className="bg-white rounded-lg shadow p-6  border border-purple-500 border-double">
                                     <div className="flex justify-between items-start mb-4">
                                         <h3 className="text-xl font-semibold text-gray-800">{team.name}</h3>
                                         <button
@@ -598,9 +598,9 @@ const TaskManager = () => {
                                             <Edit2 size={20} />
                                         </button>
                                     </div>
-                                    <div className="space-y-2">
+                                    <div className="space-y-2 ">
                                         {team.members.map((member, idx) => (
-                                            <div key={idx} className="flex justify-between items-center p-3 bg-gray-50 rounded">
+                                            <div key={idx} className="flex justify-between items-center p-3 bg-gray-50 rounded  border border-purple-500 border-double">
                                                 <div>
                                                     <p className="font-medium text-gray-800">{member.name}</p>
                                                     <p className="text-sm text-gray-600">{member.role}</p>
@@ -637,7 +637,7 @@ const TaskManager = () => {
                                 const projectTasks = tasks.filter(t => t.projectId === project.id);
 
                                 return (
-                                    <div key={project.id} className="bg-white rounded-lg shadow p-6">
+                                    <div key={project.id} className="bg-white rounded-lg shadow p-6  border border-purple-500 border-double">
                                         <div className="flex justify-between items-start mb-4">
                                             <div>
                                                 <h3 className="text-xl font-semibold text-gray-800">{project.name}</h3>
